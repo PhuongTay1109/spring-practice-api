@@ -11,10 +11,13 @@ import jakarta.validation.Payload;
 
 @Documented
 @Constraint(validatedBy = PhoneValidator.class)
-@Target( { ElementType.FIELD }) // annotation này được áp dụng trên field
+@Target({ ElementType.FIELD }) // annotation này được áp dụng trên field
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PhoneNumber {
-    String message() default "Invalid phone number";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
+	
+	String message() default "Invalid phone number";
+
+	Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
 }
