@@ -1,4 +1,4 @@
-package com.tay.util;
+package com.tay.model;
 
 public enum UserStatus {
 	ACTIVE, INACTIVE, NONE

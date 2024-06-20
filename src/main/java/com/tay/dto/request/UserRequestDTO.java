@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tay.model.UserStatus;
+import com.tay.model.UserType;
 import com.tay.util.EnumValue;
 import com.tay.util.PhoneNumber;
-import com.tay.util.UserStatus;
-import com.tay.util.UserType;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
