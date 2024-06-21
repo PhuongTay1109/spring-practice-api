@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-user-management
+    
+open:
+  api:
+    title: API document
+    version: v1.0.0
+    description: Tuan Beo API Service
+    serverUrl: http://localhost:8080
+    serverName: server test
