@@ -3,6 +3,8 @@ package com.tay.dto.response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -23,6 +25,7 @@ public class SuccessResponse extends ResponseEntity<SuccessResponse.Payload> {
 	public static class Payload {
 		private final int status;
 		private final String message;
+		@JsonInclude(JsonInclude.Include.NON_NULL)
 		private Object object;
 		
 		public Payload(int status, String message) {

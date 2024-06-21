@@ -62,7 +62,16 @@ public class GlobalExceptionHandler {
         return errResp;
     }
 
-	// các custom exception xử lý tương tự
-	// ...
-	// ...
+	@ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+	 public ErrorResponse handleResourceNotFoundException(ResourceNotFoundException e, WebRequest request) {
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setTimestamp(new Date());
+        errorResponse.setPath(request.getDescription(false).replace("uri=", ""));
+        errorResponse.setStatus(HttpStatus.NOT_FOUND.value());
+        errorResponse.setError(HttpStatus.NOT_FOUND.getReasonPhrase());
+        errorResponse.setMessage(e.getMessage());
+
+        return errorResponse;
+    }
 }

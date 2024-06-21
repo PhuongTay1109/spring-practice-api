@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: spring-user-management
-    
 open:
   api:
     title: API document
@@ -9,3 +5,18 @@ open:
     description: Tuan Beo API Service
     serverUrl: http://localhost:8080
     serverName: server test
+
+spring:
+  application:
+    name: spring-practice-api
+  datasource:
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:PhuongTay110903@}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
