@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tay.dto.request.UserDTO;
 import com.tay.dto.response.SuccessResponse;
-import com.tay.dto.response.UserDetailResponse;
 import com.tay.model.UserStatus;
-import com.tay.model.UserType;
 import com.tay.service.UserService;
 
 import jakarta.validation.Valid;
@@ -58,8 +56,25 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public SuccessResponse getUser(@PathVariable @Min(1) int userId) {
-    	UserDetailResponse user = userService.getUser(userId);
-    	return new SuccessResponse(HttpStatus.OK, "Get user info successfully", user);
+    	return new SuccessResponse(HttpStatus.OK, "Get user info successfully", userService.getUser(userId));    	
+    }
+    
+    // Spring boot phân trang bắt đầu từ 0
+    // ko bắt buộc các param
+    // mobile min = 10
+    // sortBy=firstName:asc => cắt chuỗi cái này để xử lý sort tăng dần hay giảm dần
+    @GetMapping("/list")
+    public SuccessResponse getAllUsers(@RequestParam(defaultValue = "0", required = false) int pageNo,
+    									@Min(10) @RequestParam(defaultValue = "20", required = false) int pageSize,
+    									@RequestParam(required = false) String sortBy) {
+    	return new SuccessResponse(HttpStatus.OK, "Get users info successfully", userService.getAllUsersWithSortBy(pageNo, pageSize, sortBy));
+    }
+    
+    @GetMapping("/list-with-sort-by-multiple-columns")
+    public SuccessResponse getAllUsersWithSortByMutipleColumns(@RequestParam(defaultValue = "0", required = false) int pageNo,
+    									@RequestParam(defaultValue = "20", required = false) int pageSize,
+    									@RequestParam(required = false) String... sortBy) {
+    	return new SuccessResponse(HttpStatus.OK, "Get users info successfully", userService.getAllUsersWithSortByMutipleColumns(pageNo, pageSize, sortBy));
     }
 
 }

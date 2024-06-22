@@ -26,7 +26,7 @@ public class SuccessResponse extends ResponseEntity<SuccessResponse.Payload> {
 		private final int status;
 		private final String message;
 		@JsonInclude(JsonInclude.Include.NON_NULL)
-		private Object object;
+		private Object data;
 		
 		public Payload(int status, String message) {
 			this.status = status;
