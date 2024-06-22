@@ -22,6 +22,7 @@ import com.tay.exception.ResourceNotFoundException;
 import com.tay.model.Address;
 import com.tay.model.User;
 import com.tay.model.UserStatus;
+import com.tay.repository.SearchRepository;
 import com.tay.repository.UserRepository;
 import com.tay.service.UserService;
 
@@ -34,6 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
+	private final SearchRepository searchRepository;
 
 	@Override
 	public long saveUser(UserDTO request) {
@@ -211,6 +213,13 @@ public class UserServiceImpl implements UserService {
 				.build(); 
 	}
 	
+	// customize query sort and search trên 1 trường
+	@Override
+	public PageResponse<?> getAllUsersWithSortByColumnAndSearch(int pageNo, int pageSize, String search, String sortBy) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	// hàm này được tái sử dụng nhiều lần
 	private User getUserById(long userId) {
 		return userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found"));
@@ -232,7 +241,6 @@ public class UserServiceImpl implements UserService {
         );
         return result;
     }
-
 
 
 }

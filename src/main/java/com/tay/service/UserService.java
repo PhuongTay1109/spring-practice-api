@@ -26,4 +26,8 @@ public interface UserService {
 	// usage: when calling the method, can provide multiple sorting criteria withou having to specify a fixed number of parameters
 	PageResponse<?> getAllUsersWithSortByMutipleColumns(int pageNo, int pageSize, String... sorts);
 
+	// customize query
+	// sort 1 trường
+	PageResponse<?> getAllUsersWithSortByColumnAndSearch(int pageNo, int pageSize, String search, String sortBy);
+
 }

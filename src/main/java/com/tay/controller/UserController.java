@@ -72,9 +72,18 @@ public class UserController {
     
     @GetMapping("/list-with-sort-by-multiple-columns")
     public SuccessResponse getAllUsersWithSortByMutipleColumns(@RequestParam(defaultValue = "0", required = false) int pageNo,
-    									@RequestParam(defaultValue = "20", required = false) int pageSize,
-    									@RequestParam(required = false) String... sortBy) {
+    															@RequestParam(defaultValue = "20", required = false) int pageSize,
+    															@RequestParam(required = false) String... sortBy) {
     	return new SuccessResponse(HttpStatus.OK, "Get users info successfully", userService.getAllUsersWithSortByMutipleColumns(pageNo, pageSize, sortBy));
+    }
+    
+    // Customize query
+    @GetMapping("/list-with-sort-by-column-search")
+    public SuccessResponse getAllUsersWithSortByColumnAndSearch(@RequestParam(defaultValue = "0", required = false) int pageNo,
+    															@RequestParam(defaultValue = "20", required = false) int pageSize,
+    															@RequestParam(defaultValue = "20", required = false) String search,
+    															@RequestParam(required = false) String sortBy) {
+    	return new SuccessResponse(HttpStatus.OK, "Get users info successfully", userService.getAllUsersWithSortByColumnAndSearch(pageNo, pageSize,search, sortBy));
     }
 
 }
