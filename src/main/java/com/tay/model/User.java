@@ -34,9 +34,15 @@ public class User extends AbstractEntity {
 	
     @Column(name = "first_name")
     private String firstName;
+    
+    @Column(name = "age")
+    private Integer age;
 
     @Column(name = "last_name")
     private String lastName;
+    
+    @Column(name = "activated")
+    private Boolean activated;
 
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE) // để chỉ nhận ngày tháng năm
